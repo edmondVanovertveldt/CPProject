@@ -1,0 +1,29 @@
+PODS:
+  - Mapbox-iOS-SDK (3.7.2)
+  - Reusable (4.0.0):
+    - Reusable/Storyboard (= 4.0.0)
+    - Reusable/View (= 4.0.0)
+  - Reusable/Storyboard (4.0.0)
+  - Reusable/View (4.0.0)
+  - RxCocoa (4.1.0):
+    - RxSwift (~> 4.0)
+  - RxSwift (4.1.0)
+  - SwiftGen (5.2.1)
+
+DEPENDENCIES:
+  - Mapbox-iOS-SDK (~> 3.7)
+  - Reusable (~> 4.0)
+  - RxCocoa (~> 4.0)
+  - RxSwift (~> 4.0)
+  - SwiftGen
+
+SPEC CHECKSUMS:
+  Mapbox-iOS-SDK: d882f53debc26649b728755df5b7a160d9086367
+  Reusable: 98e5fff1e0e2e00872199699b276dde08ee56c07
+  RxCocoa: cc1fec49cdc8fabe645964de7c51c099a36c2aa8
+  RxSwift: 4219941c1244c88002901bd87a69d3aea9ae71f0
+  SwiftGen: 444b4c467e512a4812b8a800d731643fd265139e
+
+PODFILE CHECKSUM: c715538f927ed98d7df9fd5cd1dd4a950ce2497f
+
+COCOAPODS: 1.2.1

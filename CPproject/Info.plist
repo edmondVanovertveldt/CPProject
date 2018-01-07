@@ -20,10 +20,16 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>MGLMapboxAccessToken</key>
+	<string>pk.eyJ1IjoiZWRtb25kMjIiLCJhIjoiY2pjMXdzeG94MDV1azMwbnhoY3JoaXRleCJ9.MG7ptr8jwSGeipKaQutWpA</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Permet de vous géolocaliser sur la carte.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Permet de vous géolocaliser sur la carte.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
-	<string>Main</string>
+	<string>HomeViewController</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

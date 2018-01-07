@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  CPproject
+
+  Created by Edmond on 07/01/2018.
+  Copyright © 2018 Edmond. All rights reserved.
+*/
+
+"location_service_disable" = "Service de géolocalisation désactivé.";
+"request_location_service_subtitle" = "Pour vous indiquer votre position sur la carte, veuillez autoriser le service de géolocalisation";
+"cancel" = "Annuler";
+"open_settings" = "Ouvrir les réglages";

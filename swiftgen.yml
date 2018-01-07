@@ -1,0 +1,11 @@
+input_dir: CPproject/Supporting Files
+output_dir: CPproject/Supporting Files/Generated/
+strings:
+  paths: fr.lproj/Localizable.strings
+  templateName: structured-swift4
+  output: strings.swift
+xcassets:
+  paths:
+   - Assets.xcassets
+  templateName: swift4
+  output: assets-images.swift
