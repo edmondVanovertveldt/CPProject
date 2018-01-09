@@ -60,6 +60,7 @@ class HomeViewController: UIViewController, StoryboardBased {
         // Add map view
         
         let mapView = CPMapBoxView(frame: self.view.frame)
+        mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.mapContainerView.addSubview(mapView)
         self.mapView = mapView
         

@@ -59,6 +59,10 @@ extension CPMapBoxView : CPMapViewProtocol {
         pin.title = annotation.title
         pin.subtitle = annotation.subTitle
         
+        if let annotations = self.mapView?.annotations {
+            self.mapView?.removeAnnotations(annotations)
+        }
+        
         self.mapView?.addAnnotation(pin)
     }
 }
