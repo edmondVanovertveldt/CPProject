@@ -20,6 +20,7 @@ class HomeViewModel: NSObject {
     
     let pinLocation: Variable<CLLocationCoordinate2D?>
     let locationAuthorization: Variable<CLAuthorizationStatus?>
+    let address: Variable<String?>
 
     // MARK: -
     // MARK: Privates properties
@@ -34,6 +35,7 @@ class HomeViewModel: NSObject {
     override init() {
         self.pinLocation = Variable(nil)
         self.locationAuthorization = Variable(nil)
+        self.address = Variable(nil)
         
         
         // Check localisation authorization status
@@ -95,3 +97,15 @@ extension HomeViewModel: CLLocationManagerDelegate {
         }
     }
 }
+
+// MARK: -
+// MARK: SearchAddressDelegate implementation
+
+extension HomeViewModel: SearchAddressDelegate {
+    
+    func searchAddress(address: AddressData) {
+        self.pinLocation.value = address.coordinate
+        self.address.value = "\(address.postalAddress?.street ?? "") \(address.postalAddress?.postalCode ?? ""), \(address.postalAddress?.city ?? "")"
+    }
+}
+

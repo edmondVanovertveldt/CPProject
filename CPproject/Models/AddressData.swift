@@ -8,9 +8,12 @@
 
 import Foundation
 import CoreLocation
+import Contacts
 
 ///
 /// Address model
 struct AddressData {
-    public var coordinate: CLLocationCoordinate2D
+    var coordinate: CLLocationCoordinate2D
+    var fullDescription: String
+    var postalAddress: CNPostalAddress?
 }

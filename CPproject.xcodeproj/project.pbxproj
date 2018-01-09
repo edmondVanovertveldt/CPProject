@@ -23,6 +23,12 @@
 		855D07C6200293EF00765F83 /* strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855D07C4200293EF00765F83 /* strings.swift */; };
 		855D07C92002C57200765F83 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855D07C82002C57200765F83 /* HomeViewModel.swift */; };
 		855D07CC2002C66900765F83 /* AddressData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855D07CB2002C66900765F83 /* AddressData.swift */; };
+		855D07CF2002F4E300765F83 /* SearchAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855D07CE2002F4E200765F83 /* SearchAddressViewController.swift */; };
+		855D07D12002F59800765F83 /* SearchAddressViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 855D07D02002F59800765F83 /* SearchAddressViewController.storyboard */; };
+		855D07D6200421F700765F83 /* AddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855D07D4200421F700765F83 /* AddressTableViewCell.swift */; };
+		855D07D7200421F700765F83 /* AddressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 855D07D5200421F700765F83 /* AddressTableViewCell.xib */; };
+		855D07D920042D8900765F83 /* SearchAddressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855D07D820042D8900765F83 /* SearchAddressViewModel.swift */; };
+		855D07DC200435E900765F83 /* AddressesDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855D07DB200435E900765F83 /* AddressesDataService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +66,12 @@
 		855D07C4200293EF00765F83 /* strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = strings.swift; sourceTree = "<group>"; };
 		855D07C82002C57200765F83 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		855D07CB2002C66900765F83 /* AddressData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressData.swift; sourceTree = "<group>"; };
+		855D07CE2002F4E200765F83 /* SearchAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAddressViewController.swift; sourceTree = "<group>"; };
+		855D07D02002F59800765F83 /* SearchAddressViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchAddressViewController.storyboard; sourceTree = "<group>"; };
+		855D07D4200421F700765F83 /* AddressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressTableViewCell.swift; sourceTree = "<group>"; };
+		855D07D5200421F700765F83 /* AddressTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressTableViewCell.xib; sourceTree = "<group>"; };
+		855D07D820042D8900765F83 /* SearchAddressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAddressViewModel.swift; sourceTree = "<group>"; };
+		855D07DB200435E900765F83 /* AddressesDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressesDataService.swift; sourceTree = "<group>"; };
 		C6DFDC8843DD3F1C2A658DC6 /* Pods_CPprojectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CPprojectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA42881A0C1B2B1EE1FF4AED /* Pods_CPproject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CPproject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7EA1C84040E483D3DD2C902 /* Pods-CPproject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CPproject.release.xcconfig"; path = "Pods/Target Support Files/Pods-CPproject/Pods-CPproject.release.xcconfig"; sourceTree = "<group>"; };
@@ -121,8 +133,10 @@
 				855D078E1FFEEE7F00765F83 /* Info.plist */,
 				855D07B620022D0D00765F83 /* Supporting Files */,
 				855D07CA2002C5B500765F83 /* Models */,
-				855D07A41FFFAD6D00765F83 /* MapView */,
+				855D07DA2004356B00765F83 /* Services */,
+				855D07D220041D5E00765F83 /* Views */,
 				855D07C72002C12900765F83 /* HomeMap */,
+				855D07CD2002F4A100765F83 /* SearchAddress */,
 				855D078B1FFEEE7F00765F83 /* LaunchScreen.storyboard */,
 			);
 			path = CPproject;
@@ -182,6 +196,42 @@
 				855D07CB2002C66900765F83 /* AddressData.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		855D07CD2002F4A100765F83 /* SearchAddress */ = {
+			isa = PBXGroup;
+			children = (
+				855D07CE2002F4E200765F83 /* SearchAddressViewController.swift */,
+				855D07D02002F59800765F83 /* SearchAddressViewController.storyboard */,
+				855D07D820042D8900765F83 /* SearchAddressViewModel.swift */,
+			);
+			path = SearchAddress;
+			sourceTree = "<group>";
+		};
+		855D07D220041D5E00765F83 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				855D07D32004218A00765F83 /* TableViewCells */,
+				855D07A41FFFAD6D00765F83 /* MapView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		855D07D32004218A00765F83 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				855D07D4200421F700765F83 /* AddressTableViewCell.swift */,
+				855D07D5200421F700765F83 /* AddressTableViewCell.xib */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		855D07DA2004356B00765F83 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				855D07DB200435E900765F83 /* AddressesDataService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		B5C465567A3377C00CA675EA /* Pods */ = {
@@ -285,9 +335,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				855D07D12002F59800765F83 /* SearchAddressViewController.storyboard in Resources */,
 				855D078D1FFEEE7F00765F83 /* LaunchScreen.storyboard in Resources */,
 				855D07BD20022EEC00765F83 /* Localizable.strings in Resources */,
 				855D078A1FFEEE7F00765F83 /* Assets.xcassets in Resources */,
+				855D07D7200421F700765F83 /* AddressTableViewCell.xib in Resources */,
 				855D07881FFEEE7F00765F83 /* HomeViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -413,14 +465,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				855D07B32001473000765F83 /* CPViewAnnotation.swift in Sources */,
+				855D07CF2002F4E300765F83 /* SearchAddressViewController.swift in Sources */,
 				855D07C5200293EF00765F83 /* assets-images.swift in Sources */,
 				855D07C6200293EF00765F83 /* strings.swift in Sources */,
 				855D07C92002C57200765F83 /* HomeViewModel.swift in Sources */,
+				855D07DC200435E900765F83 /* AddressesDataService.swift in Sources */,
+				855D07D6200421F700765F83 /* AddressTableViewCell.swift in Sources */,
 				855D07B12001406000765F83 /* CPMapViewProtocol.swift in Sources */,
 				855D07851FFEEE7F00765F83 /* HomeViewController.swift in Sources */,
 				855D07CC2002C66900765F83 /* AddressData.swift in Sources */,
 				855D07AF2001337000765F83 /* CPMapBoxView.swift in Sources */,
 				855D07831FFEEE7F00765F83 /* AppDelegate.swift in Sources */,
+				855D07D920042D8900765F83 /* SearchAddressViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

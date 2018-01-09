@@ -12,6 +12,8 @@ target 'CPproject' do
   pod 'SwiftGen'                            # SwiftGen is a tool to auto-generate Swift code for resources of your projects, to make them type-safe to use.
   pod 'RxSwift',    '~> 4.0'                # Rx for Observables, DataBinding etc ..
   pod 'RxCocoa',    '~> 4.0'
+  pod 'TPKeyboardAvoiding'                  # TableView and keyboard
+  pod 'MapboxGeocoder.swift', '~> 0.7'      # Mapbox Geocoding API
 
   target 'CPprojectTests' do
     inherit! :search_paths

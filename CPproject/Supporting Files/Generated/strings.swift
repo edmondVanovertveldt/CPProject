@@ -15,6 +15,8 @@ enum L10n {
   static let openSettings = L10n.tr("Localizable", "open_settings")
   /// Pour vous indiquer votre position sur la carte, veuillez autoriser le service de géolocalisation
   static let requestLocationServiceSubtitle = L10n.tr("Localizable", "request_location_service_subtitle")
+  /// Rechercher une adresse
+  static let searchAddress = L10n.tr("Localizable", "search_address")
 }
 // swiftlint:enable explicit_type_interface identifier_name line_length nesting type_body_length type_name
 

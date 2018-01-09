@@ -10,3 +10,4 @@
 "request_location_service_subtitle" = "Pour vous indiquer votre position sur la carte, veuillez autoriser le service de géolocalisation";
 "cancel" = "Annuler";
 "open_settings" = "Ouvrir les réglages";
+"search_address" = "Rechercher une adresse";
