@@ -14,4 +14,5 @@ import CoreLocation
 protocol CPMapViewProtocol {
     func setCenter(_ centerCoordinate: CLLocationCoordinate2D, animated: Bool)
     func setPin(_ annotation: CPViewAnnotation)
+    func getCenterCoordinate() -> CLLocationCoordinate2D
 }

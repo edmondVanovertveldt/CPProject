@@ -50,10 +50,10 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Edn-vO-9by" customClass="TPKeyboardAvoidingTableView">
-                                <rect key="frame" x="10" y="85" width="355" height="200"/>
+                                <rect key="frame" x="10" y="85" width="355" height="300"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="3eq-Xi-qQz"/>
+                                    <constraint firstAttribute="height" constant="300" id="YHU-yF-65T"/>
                                 </constraints>
                             </tableView>
                         </subviews>
@@ -74,7 +74,7 @@
                         <outlet property="addressSearchView" destination="8D6-Rp-CnJ" id="xnn-SG-352"/>
                         <outlet property="backButton" destination="GFi-kf-ikH" id="fDj-40-S7l"/>
                         <outlet property="searchAutocompleteTableView" destination="Edn-vO-9by" id="vHd-We-6BJ"/>
-                        <outlet property="tableViewHeightConstraint" destination="3eq-Xi-qQz" id="zW1-EE-nft"/>
+                        <outlet property="tableViewHeightConstraint" destination="YHU-yF-65T" id="TJk-no-fbv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CnP-Hg-nrz" userLabel="First Responder" sceneMemberID="firstResponder"/>

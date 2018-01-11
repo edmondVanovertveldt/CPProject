@@ -42,4 +42,35 @@ open class AddressesDataService {
         
         return observable
     }
+    
+    func fetchAddress(withLocation location: CLLocationCoordinate2D) -> Observable<AddressData?> {
+        let geocoder = Geocoder.shared
+        let options = ReverseGeocodeOptions(coordinate: location)
+        
+        let observable = Observable<AddressData?>.create { observer in
+            let _ = geocoder.geocode(options) { (placemarks, attribution, error) in
+                
+                guard error == nil else {
+                    observer.onError(error!)
+                    return
+                }
+                
+                guard let placemark = placemarks?.first else {
+                    observer.onNext(nil)
+                    return
+                }
+                
+                observer.onNext(AddressData(
+                    coordinate: location,
+                    fullDescription: placemark.qualifiedName,
+                    postalAddress: placemark.postalAddress))
+                
+                observer.onCompleted()
+            }
+            
+            return Disposables.create()
+        }
+        
+        return observable
+    }
 }

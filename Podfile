@@ -14,6 +14,7 @@ target 'CPproject' do
   pod 'RxCocoa',    '~> 4.0'
   pod 'TPKeyboardAvoiding'                  # TableView and keyboard
   pod 'MapboxGeocoder.swift', '~> 0.7'      # Mapbox Geocoding API
+  pod 'DeallocationChecker', :git => 'https://github.com/fastred/DeallocationChecker'           # for debug retain cycle
 
   target 'CPprojectTests' do
     inherit! :search_paths

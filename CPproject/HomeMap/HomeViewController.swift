@@ -15,7 +15,7 @@ import RxCocoa
 ///
 /// Home view controller
 /// Present Map view with user location or address location
-class HomeViewController: UIViewController, StoryboardBased {
+class HomeViewController: BaseViewController, StoryboardBased {
     
     // MARK: -
     // MARK: IBOutlets
@@ -43,7 +43,7 @@ class HomeViewController: UIViewController, StoryboardBased {
     // MARK: Properties
     
     // MapView
-    private var mapView: (UIView & CPMapViewProtocol)!
+    fileprivate var mapView: (UIView & CPMapViewProtocol)!
     
     // View model
     var viewModel: HomeViewModel!
@@ -60,8 +60,8 @@ class HomeViewController: UIViewController, StoryboardBased {
         // Add map view
         
         let mapView = CPMapBoxView(frame: self.view.frame)
-        mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        self.mapContainerView.addSubview(mapView)
+        mapView.delegate = self
+        self.mapContainerView.embedView(mapView)
         self.mapView = mapView
         
         // Configure viewModel & bindings
@@ -109,12 +109,12 @@ class HomeViewController: UIViewController, StoryboardBased {
         
         // Pin location
         self.viewModel.pinLocation.asDriver()
+//            .throttle(0.05, latest: true)
             .drive(
                 onNext: { (pinCoordinate) in
-                    // Show user location with a pin
+                    // Show location with a pin
                     if let pinCoordinate = pinCoordinate {
                         self.mapView.setPin(CPViewAnnotation(coordinate: pinCoordinate, title: "", subTitle: ""))
-                        self.mapView.setCenter(pinCoordinate, animated: true)
                     }
                 },
                 onCompleted: nil,
@@ -126,12 +126,23 @@ class HomeViewController: UIViewController, StoryboardBased {
         self.viewModel.address.asDriver()
             .drive(self.addressSearchTextField.rx.text)
             .disposed(by: self.disposeBag)
+        
+        // Map center
+        self.viewModel.mapCenter.asDriver()
+            .drive(onNext: { [weak self] (centerCoordinate) in
+                if let centerCoordinate = centerCoordinate {
+                    self?.mapView.setCenter(centerCoordinate, animated: true)
+                }
+            }, onCompleted: nil,
+               onDisposed: nil)
+            .disposed(by: self.disposeBag)
     }
 }
 
 
 // MARK: -
 // MARK: UITextFieldDelegate implementation
+
 extension HomeViewController: UITextFieldDelegate {
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
@@ -141,6 +152,18 @@ extension HomeViewController: UITextFieldDelegate {
         
         self.present(searchVC, animated: false, completion: nil)
         return false
+    }
+}
+
+// MARK: -
+// MARK: CPMapViewDelegateProtocol implementation
+
+extension HomeViewController: CPMapViewDelegateProtocol {
+    
+    func cpMapViewRegionDidChange(_ mapView: CPMapBoxView) {}
+    
+    func cpMapViewDraggedView(_ sender:UIPanGestureRecognizer) {
+        self.viewModel.pinLocation.value = mapView.getCenterCoordinate()
     }
 }
 

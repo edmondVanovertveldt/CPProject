@@ -14,7 +14,7 @@ import RxCocoa
 ///
 /// SearchAddressViewController
 /// Present seach address text and autocomplete.
-class SearchAddressViewController: UIViewController, StoryboardBased {
+class SearchAddressViewController: BaseViewController, StoryboardBased {
 
     // MARK: -
     // MARK: IBOutlets
@@ -36,13 +36,21 @@ class SearchAddressViewController: UIViewController, StoryboardBased {
         }
     }
     @IBOutlet var backButton: UIButton!
-    @IBOutlet var searchAutocompleteTableView: UITableView!
+    @IBOutlet var searchAutocompleteTableView: UITableView! {
+        didSet {
+            self.tableViewInitHeight = searchAutocompleteTableView.frame.height
+            self.tableViewMaxHeight = searchAutocompleteTableView.frame.height
+        }
+    }
     
     // Constraints
     @IBOutlet var tableViewHeightConstraint: NSLayoutConstraint!
     
     // MARK: -
     // MARK: Properties
+    
+    private var tableViewMaxHeight: CGFloat!
+    private var tableViewInitHeight: CGFloat!
     
     // View model
     var viewModel: SearchAddressViewModel!
@@ -71,6 +79,9 @@ class SearchAddressViewController: UIViewController, StoryboardBased {
 
         // Configure viewModel & bindings
         self.configureBindings()
+        
+        // Init keyboard observer to adapt tableviewHeight
+        self.initKeyboardObservers()
     }
 
     
@@ -99,14 +110,15 @@ class SearchAddressViewController: UIViewController, StoryboardBased {
             .drive(self.searchAutocompleteTableView.rx.isHidden)
             .disposed(by: self.disposeBag)
         
-        // Size
+        // TableView Size
         self.searchAutocompleteTableView.rx.observe(CGSize.self, "contentSize")
             .asDriver(onErrorJustReturn: nil)
-            .drive(onNext: { (contentSize) in
+            .drive(onNext: { [weak self] (contentSize) in
                 if let contentSize = contentSize {
                     UIView.animate(withDuration: 0.25, animations: {
-                        self.tableViewHeightConstraint.constant = contentSize.height
-                        self.view.setNeedsUpdateConstraints()
+                        let maxHeight = self?.tableViewMaxHeight ?? 0
+                        self?.tableViewHeightConstraint.constant = contentSize.height > maxHeight ? maxHeight : contentSize.height
+                        self?.view.setNeedsUpdateConstraints()
                     })
                 }
             }, onCompleted: nil,
@@ -140,6 +152,39 @@ class SearchAddressViewController: UIViewController, StoryboardBased {
         
         // Register cells
         self.searchAutocompleteTableView.register(cellType: AddressTableViewCell.self)
+    }
+    
+    private func initKeyboardObservers() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow),
+            name: NSNotification.Name.UIKeyboardWillShow,
+            object: nil
+        )
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillHide),
+            name: NSNotification.Name.UIKeyboardWillHide,
+            object: nil
+        )
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            self.tableViewMaxHeight = keyboardHeight
+        }
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+        self.tableViewMaxHeight = self.tableViewInitHeight
+        
+        UIView.animate(withDuration: 0.25, animations: {
+            self.tableViewHeightConstraint.constant = self.tableViewInitHeight
+            self.view.setNeedsUpdateConstraints()
+        })
     }
 }
 

@@ -21,22 +21,24 @@ class HomeViewModel: NSObject {
     let pinLocation: Variable<CLLocationCoordinate2D?>
     let locationAuthorization: Variable<CLAuthorizationStatus?>
     let address: Variable<String?>
+    let mapCenter: Variable<CLLocationCoordinate2D?>
 
     // MARK: -
     // MARK: Privates properties
     
     // Location manager
     fileprivate var locationManager: CLLocationManager!
+    private let disposeBag = DisposeBag()
     
     
     // MARK: -
     // MARK: Init
     
-    override init() {
+    init(addressesDataService: AddressesDataService) {
         self.pinLocation = Variable(nil)
         self.locationAuthorization = Variable(nil)
         self.address = Variable(nil)
-        
+        self.mapCenter = Variable(nil)
         
         // Check localisation authorization status
         
@@ -67,6 +69,30 @@ class HomeViewModel: NSObject {
         super.init()
         
         self.locationManager.delegate = self
+        
+        self.pinLocation.asDriver()
+            .skip(2)
+            .throttle(0.5, latest: true)
+            // Convert location -> Address
+            .flatMap({ (location) -> Driver<AddressData?> in
+                if let location = location {
+                    return addressesDataService.fetchAddress(withLocation: location)
+                        .asDriver(onErrorJustReturn: nil)
+                } else {
+                    return Driver.just(nil)
+                }
+            })
+            // Bind
+            .drive(onNext: { (addressData) in
+                self.setSearchAddress(address: addressData)
+            }, onCompleted: nil, onDisposed: nil)
+            .disposed(by: self.disposeBag)
+    }
+    
+    fileprivate func setSearchAddress(address: AddressData?) {
+        if let address = address {
+            self.address.value = "\(address.postalAddress?.street ?? "") \(address.postalAddress?.postalCode ?? ""), \(address.postalAddress?.city ?? "")"
+        }
     }
 }
 
@@ -93,6 +119,7 @@ extension HomeViewModel: CLLocationManagerDelegate {
         
         if self.pinLocation.value == nil {
             self.pinLocation.value = locations.first?.coordinate
+            self.mapCenter.value = locations.first?.coordinate
             self.locationManager.stopUpdatingLocation()
         }
     }
@@ -104,8 +131,9 @@ extension HomeViewModel: CLLocationManagerDelegate {
 extension HomeViewModel: SearchAddressDelegate {
     
     func searchAddress(address: AddressData) {
+        self.mapCenter.value = address.coordinate
         self.pinLocation.value = address.coordinate
-        self.address.value = "\(address.postalAddress?.street ?? "") \(address.postalAddress?.postalCode ?? ""), \(address.postalAddress?.city ?? "")"
+        self.setSearchAddress(address: address)
     }
 }
 

@@ -29,6 +29,9 @@
 		855D07D7200421F700765F83 /* AddressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 855D07D5200421F700765F83 /* AddressTableViewCell.xib */; };
 		855D07D920042D8900765F83 /* SearchAddressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855D07D820042D8900765F83 /* SearchAddressViewModel.swift */; };
 		855D07DC200435E900765F83 /* AddressesDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855D07DB200435E900765F83 /* AddressesDataService.swift */; };
+		855D07E420058FF700765F83 /* CPMapViewDelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855D07E320058FF700765F83 /* CPMapViewDelegateProtocol.swift */; };
+		855D07E82006DB3C00765F83 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855D07E72006DB3C00765F83 /* BaseViewController.swift */; };
+		855D07EA2006FCCE00765F83 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855D07E92006FCCE00765F83 /* UIView+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +75,9 @@
 		855D07D5200421F700765F83 /* AddressTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressTableViewCell.xib; sourceTree = "<group>"; };
 		855D07D820042D8900765F83 /* SearchAddressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAddressViewModel.swift; sourceTree = "<group>"; };
 		855D07DB200435E900765F83 /* AddressesDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressesDataService.swift; sourceTree = "<group>"; };
+		855D07E320058FF700765F83 /* CPMapViewDelegateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPMapViewDelegateProtocol.swift; sourceTree = "<group>"; };
+		855D07E72006DB3C00765F83 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		855D07E92006FCCE00765F83 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		C6DFDC8843DD3F1C2A658DC6 /* Pods_CPprojectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CPprojectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA42881A0C1B2B1EE1FF4AED /* Pods_CPproject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CPproject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7EA1C84040E483D3DD2C902 /* Pods-CPproject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CPproject.release.xcconfig"; path = "Pods/Target Support Files/Pods-CPproject/Pods-CPproject.release.xcconfig"; sourceTree = "<group>"; };
@@ -138,6 +144,8 @@
 				855D07C72002C12900765F83 /* HomeMap */,
 				855D07CD2002F4A100765F83 /* SearchAddress */,
 				855D078B1FFEEE7F00765F83 /* LaunchScreen.storyboard */,
+				855D07E72006DB3C00765F83 /* BaseViewController.swift */,
+				855D07E92006FCCE00765F83 /* UIView+Extension.swift */,
 			);
 			path = CPproject;
 			sourceTree = "<group>";
@@ -154,6 +162,7 @@
 		855D07A41FFFAD6D00765F83 /* MapView */ = {
 			isa = PBXGroup;
 			children = (
+				855D07E320058FF700765F83 /* CPMapViewDelegateProtocol.swift */,
 				855D07B02001406000765F83 /* CPMapViewProtocol.swift */,
 				855D07B22001473000765F83 /* CPViewAnnotation.swift */,
 				855D07AE2001337000765F83 /* CPMapBoxView.swift */,
@@ -466,8 +475,11 @@
 			files = (
 				855D07B32001473000765F83 /* CPViewAnnotation.swift in Sources */,
 				855D07CF2002F4E300765F83 /* SearchAddressViewController.swift in Sources */,
+				855D07EA2006FCCE00765F83 /* UIView+Extension.swift in Sources */,
 				855D07C5200293EF00765F83 /* assets-images.swift in Sources */,
+				855D07E420058FF700765F83 /* CPMapViewDelegateProtocol.swift in Sources */,
 				855D07C6200293EF00765F83 /* strings.swift in Sources */,
+				855D07E82006DB3C00765F83 /* BaseViewController.swift in Sources */,
 				855D07C92002C57200765F83 /* HomeViewModel.swift in Sources */,
 				855D07DC200435E900765F83 /* AddressesDataService.swift in Sources */,
 				855D07D6200421F700765F83 /* AddressTableViewCell.swift in Sources */,

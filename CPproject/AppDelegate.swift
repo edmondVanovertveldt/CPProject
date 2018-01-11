@@ -17,10 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        let datasService = AddressesDataService()
+        
         // Instanciate first ViewController
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let homeViewController = HomeViewController.instantiate()
-        homeViewController.viewModel = HomeViewModel()
+        homeViewController.viewModel = HomeViewModel(addressesDataService: datasService)
         
         self.window?.rootViewController = homeViewController
         self.window?.makeKeyAndVisible()

@@ -89,6 +89,7 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "$BUILT_PRODUCTS_DIR/DeallocationChecker/DeallocationChecker.framework"
   install_framework "${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/Mapbox.framework"
   install_framework "$BUILT_PRODUCTS_DIR/MapboxGeocoder.swift/MapboxGeocoder.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Reusable/Reusable.framework"
@@ -97,6 +98,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/TPKeyboardAvoiding/TPKeyboardAvoiding.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "$BUILT_PRODUCTS_DIR/DeallocationChecker/DeallocationChecker.framework"
   install_framework "${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/Mapbox.framework"
   install_framework "$BUILT_PRODUCTS_DIR/MapboxGeocoder.swift/MapboxGeocoder.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Reusable/Reusable.framework"
